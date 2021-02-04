@@ -1,0 +1,65 @@
+﻿@page
+@model MedicalCenterAppointmentApp.Pages.AppointmentList.IndexModel
+
+
+
+<br /> 
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-primary">Appointment List</h2>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-primary text-white">Create New Appointment</a>
+    </div>
+
+    <div class="col-12 border p-3 m-3">
+        <form method="post">
+            @if (Model.Appointments.Count() > 0)
+            {
+                <table class="table table-striped border table-hover">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Appointments.FirstOrDefault().AppointmentId">ID</label>
+                        </th>
+                        <th>
+                            <label asp-for="Appointments.FirstOrDefault().DoctorId"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Appointments.FirstOrDefault().PatientId"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Appointments.FirstOrDefault().AppointmentDatatime"></label>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.Appointments)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.AppointmentId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.DoctorId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.PatientId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.AppointmentDatatime)
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                                <button class="btn btn-info btn-sm">Edit</button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p> No appointments available</p>
+            }
+        </form>
+    </div>
+</div> 

@@ -1,0 +1,57 @@
+﻿@page
+@model MedicalCenterAppointmentApp.Pages.DoctorList.IndexModel
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-primary">Doctor List</h2>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-primary text-white">Add A New Doctor</a>
+    </div>
+
+    <div class="col-12 border p-3 m-3">
+        <form method="post">
+            @if (Model.Doctors.Count() > 0)
+            {
+                <table class="table table-striped border table-hover">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Doctors.FirstOrDefault().DoctorId"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Doctors.FirstOrDefault().DoctorName"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Doctors.FirstOrDefault().DoctorPhone"></label>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                    @foreach(var item in Model.Doctors)
+                    { 
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.DoctorId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.DoctorName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.DoctorPhone)
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                                <button class="btn btn-info btn-sm">Edit</button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p> No doctors available</p>
+            }
+        </form>
+    </div>
+</div>

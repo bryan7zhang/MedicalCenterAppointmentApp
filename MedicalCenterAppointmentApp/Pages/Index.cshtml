@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome To Medical Center Appointment App</h1>
+    <p>This Web application facilitate the management of appointment scheduling in medical centers</p>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a href="#" class="btn btn-primary">Read More</a>
+</div>
+
+<div class="container text-center">
+    <div id="clock"></div>
+</div>
+
+<script type="text/javascript">
+    var clockElement = document.getElementById('clock');
+
+    function clock() {
+        clockElement.textContent = new Date().toString();
+    }
+
+    setInterval(clock, 1000);
+</script>
